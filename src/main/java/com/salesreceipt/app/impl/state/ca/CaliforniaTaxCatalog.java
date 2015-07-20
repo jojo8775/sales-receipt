@@ -61,4 +61,39 @@ public class CaliforniaTaxCatalog implements TaxCatalog
 
 		return 0;
 	}
+	
+	@Override
+	public int hashCode()
+	{
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((taxCatalogCriteria == null) ? 0 : taxCatalogCriteria.hashCode());
+		result = prime * result + ((taxExemptedItems == null) ? 0 : taxExemptedItems.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj)
+	{
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		CaliforniaTaxCatalog other = (CaliforniaTaxCatalog) obj;
+		if (taxCatalogCriteria == null)
+		{
+			if (other.taxCatalogCriteria != null)
+				return false;
+		} else if (!taxCatalogCriteria.equals(other.taxCatalogCriteria))
+			return false;
+		if (taxExemptedItems == null)
+		{
+			if (other.taxExemptedItems != null)
+				return false;
+		} else if (!taxExemptedItems.equals(other.taxExemptedItems))
+			return false;
+		return true;
+	}
 }
