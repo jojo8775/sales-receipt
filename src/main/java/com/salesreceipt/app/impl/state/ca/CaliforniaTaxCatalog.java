@@ -10,14 +10,26 @@ import com.salesreceipt.app.MenuItem;
 import com.salesreceipt.app.TaxCatalog;
 import com.salesreceipt.app.impl.TaxCatalogCriteria;
 
+/**
+ * Represents implementation of {@link TaxCatalog} configured to California
+ * state.
+ */
 public class CaliforniaTaxCatalog implements TaxCatalog
 {
 	private final TaxCatalogCriteria taxCatalogCriteria;
 	private final Set<ItemCategory> taxExemptedItems;
 
+	/**
+	 * Creates a new {@link CaliforniaTaxCatalog}.
+	 * 
+	 * @param taxCatalogCriteria
+	 *            the {@link TaxCatalogCriteria}.
+	 * @throws IllegalArgumentException
+	 *             if (@code taxCatalogCriteria) is null
+	 */
 	public CaliforniaTaxCatalog(TaxCatalogCriteria taxCatalogCriteria)
 	{
-		this.taxCatalogCriteria = taxCatalogCriteria;
+		this.taxCatalogCriteria = rejectIfNull(taxCatalogCriteria, "taxCatalogCriteria");
 		this.taxExemptedItems = taxCatalogCriteria.getTaxExemptedItems();
 	}
 
