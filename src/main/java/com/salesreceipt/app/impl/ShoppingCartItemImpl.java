@@ -1,5 +1,6 @@
 package com.salesreceipt.app.impl;
 
+import static com.salesreceipt.util.ArgumentChecker.rejectIfNull;
 import static com.salesreceipt.util.ArgumentChecker.roundToTwoDecimalPlace;
 
 import com.salesreceipt.app.MenuItem;
@@ -17,7 +18,8 @@ public class ShoppingCartItemImpl implements ShoppingCartItem
 
 	public ShoppingCartItemImpl(MenuItem menuItem, TaxCatalog taxCatalog)
 	{
-		this.menuItem = menuItem;
+		rejectIfNull(taxCatalog, "taxCatalog");
+		this.menuItem = rejectIfNull(menuItem, "menuItem");
 		salesTax = taxCatalog.calculateSalesTax(menuItem);
 		priceAfterTax = roundToTwoDecimalPlace(menuItem.getPrice() + salesTax);
 		priceAfterTax *= menuItem.getQuantity();

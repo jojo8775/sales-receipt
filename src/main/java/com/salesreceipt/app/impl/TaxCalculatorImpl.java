@@ -44,4 +44,20 @@ public class TaxCalculatorImpl implements TaxCalculator
 		System.out.println("Sales Taxes: " + totalSalesTax);
 		System.out.println("Total: " + totalPriceAfterTax);
 	}
+
+	/**
+	 * this methods is intended to be used for junit test only
+	 */
+	double getTotalSalesPrice()
+	{
+		return totalPriceAfterTax;
+	}
+
+	/**
+	 * this methods is intended to be used for junit test only
+	 */
+	double getTotalSaleTax()
+	{
+		return totalSalesTax;
+	}
 }

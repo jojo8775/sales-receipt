@@ -1,5 +1,7 @@
 package com.salesreceipt.app.impl;
 
+import static com.salesreceipt.util.ArgumentChecker.rejectIfNull;
+
 import java.util.Set;
 
 import com.salesreceipt.app.ItemCategory;
@@ -14,7 +16,7 @@ public class MenuItemImpl implements MenuItem
 
 	public MenuItemImpl(MenuItemCriteria itemCriteria)
 	{
-		this.itemCriteria = itemCriteria;
+		this.itemCriteria = rejectIfNull(itemCriteria, "itemCriteria");
 	}
 
 	public Set<ItemCategory> getCatagories()
